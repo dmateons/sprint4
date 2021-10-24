@@ -1,0 +1,48 @@
+{%extends "encabezado.html" %}
+    
+
+    <body style="background-color:#292929;">
+
+      {%block contenido%}
+
+      
+
+      <h2 class="text-center" style="color: aliceblue;">DASHBOARD ADMINISTRATIVO</h2>
+
+        
+      <ul class="nav nav-tabs" style="color: chartreuse;">
+
+        <li class="nav-item">
+          <a class="nav-link" style="color: aliceblue;" href="#">Usuarios</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="color: aliceblue;" href="#">Reservas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="color: aliceblue;" href="#">Facturacion/Deudas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="color: aliceblue;" href="#">CRUD Habitaciones</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="color: aliceblue;" href="#">Asignar Roles</a>
+        </li>
+      </ul>
+      {%endblock%}
+
+      {%block camp_text %}
+
+         <div class="pie-form">
+                
+                <h6 style="color: rgb(247, 160, 78);">{{error}}</h6>
+                
+         </div>
+        
+      {%endblock%}
+
+
+      
+    </body>
+    
+
+    

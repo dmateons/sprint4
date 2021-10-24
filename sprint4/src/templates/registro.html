@@ -1,0 +1,74 @@
+{%extends "encabezado.html" %}  
+    <body> 
+        {%block contenido%}
+        <div id="contenedor">
+            <div id="central">
+                <div id="login">
+                    <div class="titulo">
+                        Registro
+                    </div>
+                    <form id="loginform" action="/registro" method="POST">
+                        <div class='login'>
+                            <div class='fila'>
+                                <div class='c2' style="color: aliceblue;">{{ prueba.nom.label }}</div>
+                                <div class='c8'>{{ prueba.nom(size=100, minlength=1, maxlength=100) }}</div>
+                            </div>
+                            <div class='fila'>
+                                <div class='c2' style="color: aliceblue;">{{ prueba.usu.label }}</div>
+                                <div class='c3'>{{ prueba.usu(size=40, minlength=5, maxlength=40) }}</div>
+                            </div>
+                            <div class='fila'>
+                                <div class='c2' style="color: aliceblue;">{{ prueba.ema.label }}</div>
+                                <div class='c8'>{{ prueba.ema(size=100, minlength=3, maxlength=100) }}</div>
+                            </div>
+                            <div class='fila'>
+                                <div class='c2' style="color: aliceblue;">{{ prueba.cla.label }}</div>
+                                <div class='c3'>{{ prueba.cla(size=40, minlength=5, maxlength=40) }}</div>
+                                <div class='c2' style="color: aliceblue;">{{ prueba.ver.label }}</div>
+                                <div class='c3'>{{ prueba.ver(size=40, minlength=5, maxlength=40) }}</div>
+                            </div>
+                            <div class='fila'><br /><hr /><br /></div>
+                            <div class='fila'>
+                                <div class='c8'>&nbsp;</div>
+                                <div class='c2'>{{ prueba.btn() }}</div>
+                            </div style="color: aliceblue;">
+                            {% for msg in get_flashed_messages() %}
+                            <div class='fila' style="color: aliceblue;">{{ msg }}</div>
+                            {% endfor %}
+                        </div>
+                    
+
+                    </form>
+
+                    <div class="pie-form">
+                        <a href="/login">Ya tengo cuenta</a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="inferior">
+                    <a href="/inicio">Volver</a>
+                </div>
+            </div>
+        </div>
+
+        
+
+        
+        {%endblock%}
+
+        {%block camp_text %}
+
+         <div class="pie-form">
+                
+                <h6 style="color: rgb(247, 160, 78);">{{error}}</h6>
+                
+         </div>
+        
+        {%endblock%}
+
+            
+    </body>
+    
+    
+    

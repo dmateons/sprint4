@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+
+        <meta charset="utf-8">
+        <title>Hotel Grupo1</title>
+
+        <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css?family=Overpass&display=swap" rel="stylesheet">
+        
+        <!-- /<link rel="stylesheet" href="/static/style.css">-->
+        <link rel="stylesheet" href="/static/login.css">
+
+        <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+        
+        <script src="/static/js/jquery-3.2.1.slim.min.js"></script>
+        <script src="/static/js/popper.min.js"></script>
+
+        <script src="/static/js/bootstrap.min.js"></script>
+    </head>
+
+    <body style="background-color: rgb(29, 29, 29);">
+
+        <header class="center" style="background-color: rgb(80, 80, 80);" >
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-brand" style="margin-right: 200px; margin-left: 100px;" href="/inicio">Hotel</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+            
+                <div class="collapse navbar-collapse" id="navbarColor01">
+                  <ul class="navbar-nav mr-auto">
+                    {% if 'usr' in session %}
+                    <li class="nav-item">
+                      <a class="nav-link" href="/logout/">Salir</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                      <a class="nav-link" href="/login/">Iniciar Sesion</a>
+                    </li>
+                    {% endif %}
+
+                    <li class="nav-item">
+                      <a class="nav-link" href="/habitaciones">Habitaciones</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/ubicacion">Ubicacion</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/ofertas">Ofertas</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/dashboard">Dashboard</a>
+                    </li>
+                  </ul>
+                  <form class="form-inline">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+                  </form>
+                </div>
+              </nav>
+            
+        </header>
+        
+
+        {% block contenido %}
+        
+        {% endblock %}
+
+        
+        {% block camp_text %}
+        
+        {% endblock %}
+       
+
+  </body>
+</html>

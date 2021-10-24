@@ -1,0 +1,55 @@
+{%extends "encabezado.html" %}
+    
+    <body style="background-color:#292929;">
+        {%block contenido%}
+
+        <div id="contenedor">
+            <div id="central">
+                <div id="login">
+                    <div class="titulo">
+                        Iniciar Sesion
+                    </div>
+                    <form name='login' id="login" action="/login/" method="POST">
+                        <div class='login'>
+                            <div class='fila'>
+                                <div class='c3' style="color: rgb(253, 253, 253);">{{ prueba.usu.label }}</div>
+                                <div class='c7'>{{ prueba.usu(size=40, minlength=5, maxlength=40) }}</div>
+                            </div>
+                            <div class='fila'>
+                                <div class='c3' style="color: aliceblue;">{{ prueba.cla.label }}</div>
+                                <div class='c7'>{{ prueba.cla(size=40, minlength=5, maxlength=40) }}</div>
+                            </div>
+                            
+                            <div class='fila' style="color: aliceblue;">
+                                <div class='c8'>&nbsp;</div>
+                                <div class='c2'>{{ prueba.btn() }}</div>
+
+                            </div style="color: aliceblue;">
+                            {% for msg in get_flashed_messages() %}
+                            <div class='fila' style="color: aliceblue;">{{ msg }}</div>
+                            {% endfor %}
+                        </div>
+                    </form>
+                    <div class="pie-form">
+                        <a href="/recuperarcontraseña">¿Perdiste tu contraseña?</a>
+                        <a href="/registro">¿No tienes Cuenta? Registrate</a>
+                    </div>
+                </div>
+                <div class="inferior">
+                    <a href="/inicio">Volver</a>
+                </div>
+            </div>
+        </div>
+        {%endblock%}
+
+
+        {%block camp_text %}
+        
+        {%endblock%}
+
+
+    </body>
+
+   
+    
+   
