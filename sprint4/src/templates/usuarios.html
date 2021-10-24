@@ -1,0 +1,30 @@
+{% extends "dashboard.html" %}
+    
+
+    <body style="background-color:#292929;">
+
+        {%block contenidoDASH %}
+
+        <table class="table" style="color: aliceblue;">
+            <tr>
+              <th>ID</th>
+              <th>Usuario</th>
+              <th>Email</th>
+            </tr>
+            {% for dat in messages %}
+                <tr>
+                <td>{{ dat[0] }}</td>
+                <td>{{ dat[1] }}</td>
+                <td>{{ dat[2] }}</td>
+                </tr>
+            {% endfor %}
+                {% for msg in get_flashed_messages() %}
+                    <div class='fila' style="color: aliceblue;">{{ msg }}</div>
+                {% endfor %}
+        </table>
+        
+
+        {% endblock %}
+
+    </body>
+        

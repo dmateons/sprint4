@@ -107,6 +107,24 @@ def register():
 def dashboard():
     return render_template('dashboard.html')
 
+@app.route('/usuarios/')
+def usuarios_dashboard():
+
+    # Preparar la consulta
+    sql = f'SELECT id, usuario, email FROM usuario'
+    # Ejecutar la consulta
+    res = seleccion(sql)
+    print(res)
+    # Proceso los resultados
+    if len(res)==0:
+        flash("No se encontraron usuarios")
+    return render_template('usuarios.html', titulo="usuarios", messages=res)
+
+@app.route('/crudhabitaciones',methods=["GET"])
+def crudhabitaciones():
+    print("crud habitaciones")
+    return render_template('CrudHab.html')
+
 @app.route('/ubicacion',methods=["GET"])
 def ubicacion():
     return render_template('ubicacion.html')

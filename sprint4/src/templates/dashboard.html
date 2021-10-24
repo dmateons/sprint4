@@ -4,16 +4,14 @@
     <body style="background-color:#292929;">
 
       {%block contenido%}
-
-      
-
+      <div>
       <h2 class="text-center" style="color: aliceblue;">DASHBOARD ADMINISTRATIVO</h2>
 
         
       <ul class="nav nav-tabs" style="color: chartreuse;">
 
         <li class="nav-item">
-          <a class="nav-link" style="color: aliceblue;" href="#">Usuarios</a>
+          <a class="nav-link" style="color: aliceblue;" href="/usuarios/">Usuarios</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" style="color: aliceblue;" href="#">Reservas</a>
@@ -22,23 +20,27 @@
           <a class="nav-link" style="color: aliceblue;" href="#">Facturacion/Deudas</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" style="color: aliceblue;" href="#">CRUD Habitaciones</a>
+          <a class="nav-link" style="color: aliceblue;" href="/crudhabitaciones">CRUD Habitaciones</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" style="color: aliceblue;" href="#">Asignar Roles</a>
         </li>
-      </ul>
-      {%endblock%}
+      </ul> 
+    </div>
 
-      {%block camp_text %}
+    <div>
 
-         <div class="pie-form">
-                
-                <h6 style="color: rgb(247, 160, 78);">{{error}}</h6>
-                
-         </div>
-        
-      {%endblock%}
+      {% block contenidoDASH %}
+
+      
+      {% endblock %}
+
+    </div>
+
+    {% endblock %}
+
+    
+
 
 
       
