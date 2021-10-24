@@ -1,6 +1,7 @@
 import re
 from validate_email import validate_email
 
+
 def email_valido(email):
     return validate_email(email)
 

@@ -1,6 +1,7 @@
 import sqlite3
 URL_DB = 'C:/Users/Administrador/Documents/Ciclo3-Mintic2021/sprint4/src/db.db'
 
+
 def seleccion(sql) -> list:
     """ Ejecuta una consulta de selección sobre la base de datos """
     try:

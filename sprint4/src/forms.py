@@ -3,6 +3,7 @@ from wtforms import TextField, SubmitField, PasswordField, TextAreaField
 from wtforms.fields.html5 import EmailField
 from wtforms.validators import EqualTo, InputRequired
 
+
 class Login(FlaskForm):
     usu = TextField('Usuario *', validators = [InputRequired(message='Indique el usuario')])
     cla = PasswordField('Clave *', validators = [InputRequired(message='Indique la clave')])
