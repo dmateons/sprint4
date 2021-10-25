@@ -3,8 +3,31 @@
     <body style="background-color:#292929;">
 
         {%block contenidoDASH %}
+        
+        <h1 style="color: rgb(217, 231, 243);">CREAR HABITACIONES</h1>
 
-        <h1 style="color: rgb(217, 231, 243);">CRUD HABITACIONES</h1>
+        <form name='login' action="/crudhabitaciones" method="POST">
+            <div class='login' id="central">
+                <div class='fila'>
+                    <div class='c3' style="color: rgb(253, 253, 253);">{{ prueba.hab.label }}</div>
+                    <div class='c7'>{{ prueba.hab(size=40, minlength=5, maxlength=40) }}</div>
+                </div>
+                <div class='fila'>
+                    <div class='c3' style="color: aliceblue;">{{ prueba.disp.label }}</div>
+                    <div class='c7'>{{ prueba.disp(size=40, minlength=5, maxlength=40) }}</div>
+                </div>
+                <div class='fila' style="color: aliceblue;">
+                    <div class='c8'>&nbsp;</div>
+                    <div class='c2'>{{ prueba.btn() }}</div>
+                </div style="color: aliceblue;">
+                
+                {% for msg in get_flashed_messages() %}
+                <div class='fila' style="color: aliceblue;">{{ msg }}</div>
+                {% endfor %}
+            </div>
+        </form>
+    </div>
+
 
 
         {% endblock %}

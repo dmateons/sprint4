@@ -7,7 +7,7 @@
             <div id="central">
                 <div id="login">
                     <div class="titulo">
-                        Iniciar Sesion
+                        Iniciar Sesion  
                     </div>
                     <form name='login' id="login" action="/login/" method="POST">
                         <div class='login'>
@@ -23,8 +23,8 @@
                             <div class='fila' style="color: aliceblue;">
                                 <div class='c8'>&nbsp;</div>
                                 <div class='c2'>{{ prueba.btn() }}</div>
-
                             </div style="color: aliceblue;">
+                            
                             {% for msg in get_flashed_messages() %}
                             <div class='fila' style="color: aliceblue;">{{ msg }}</div>
                             {% endfor %}

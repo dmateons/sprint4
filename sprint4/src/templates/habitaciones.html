@@ -1,79 +1,27 @@
 {% extends "encabezado.html" %}
-    {% block contenido %}
-    
-      <body style="background-color:#292929;">
-        
-      
-        <h2 class="text-center" style="color: aliceblue;">HABITACIONES</h2>
-
-
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Piso
-          </button>
-          <div class="dropdown-menu" aria-rowindex="1" aria-labelledby="dropdown-item">
-            <a class="dropdown-item" href="#">1</a>
-            <a class="dropdown-item" href="#">2</a>
-            <a class="dropdown-item" href="#">3</a>
-          </div>
-
-          <table id="tabla2" class="table" style="width: 200px" >
-            <thead class="thead-dark">
-              <tr style="color: aliceblue;">
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr style="color: aliceblue;">
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr style="color: aliceblue;">
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr style="color: aliceblue;">
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <div>
-
-          <a id= "tabla2"  class="btn btn-primary" role="button"
-            {% if sesion_iniciada %}
-            href="/pago" 
-            {% else %}href="/login"
-            {% endif %}
-            >Reservar
-          </a>
-            
     
 
-          </div>
-          
+    <body style="background-color:#292929;">
 
-        </div>
-      </body>
+        {%block contenido %}
 
-      
-
+        <table class="table" style="color: aliceblue;" >
+            <tr>
+              <th>Habitacion</th>
+              <th>Disponibilidad</th>              
+            </tr>
+            {% for dat in messages %}
+                <tr>
+                  <td>{{ dat[0] }}</td>
+                  <td>{{ dat[1] }}</td>
+                </tr>
+            {% endfor %}
+                {% for msg in get_flashed_messages() %}
+                    <div class='fila' style="color: aliceblue;">{{ msg }}</div>
+                {% endfor %}
+        </table>
         
 
-      
-      
+        {% endblock %}
 
-
-
-
-    {%endblock%}
+    </body>

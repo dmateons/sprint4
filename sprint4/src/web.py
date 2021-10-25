@@ -1,11 +1,11 @@
 from flask import Flask, render_template, redirect, session, flash, request
-from forms import Login, Registro
+from forms import Login, Registro ,CrudHabitaciones
 from markupsafe import escape
 import os
-from utils import login_valido, pass_valido, email_valido
+from utils import login_valido, pass_valido, email_valido, habitacion_valido
 from werkzeug.security import check_password_hash, generate_password_hash
 from db import seleccion, accion
-# Sprint4
+
 app = Flask(__name__)
 
 app.secret_key = os.urandom(24)
@@ -27,7 +27,7 @@ def login():
     usu = escape(frm.usu.data.strip())
     pwd = escape(frm.cla.data.strip())
     # Preparar la consulta - No paramétrica
-    sql = f"SELECT id, nombre, email, clave FROM usuario WHERE usuario='{usu}'"
+    sql = f"SELECT id, nombre, email, clave, rol FROM usuario WHERE usuario='{usu}'"
     # Ejecutar la consulta
     res = seleccion(sql)
     # Procesar los resultados
@@ -46,6 +46,8 @@ def login():
             session['usr'] = usu
             session['cla'] = pwd
             session['ema'] = res[0][2]
+            session['rol'] = res[0][4]
+            #print(session['rol'])
             return redirect('/habitaciones/')
         else:
             flash('ERROR: Usuario o contraseña invalidos')
@@ -105,6 +107,7 @@ def register():
 
 @app.route('/dashboard',methods=["GET","POST"])
 def dashboard():
+
     return render_template('dashboard.html')
 
 @app.route('/usuarios/')
@@ -120,18 +123,62 @@ def usuarios_dashboard():
         flash("No se encontraron usuarios")
     return render_template('usuarios.html', titulo="usuarios", messages=res)
 
-@app.route('/crudhabitaciones',methods=["GET"])
+@app.route('/reservas',methods=["GET"])
+def reservas():
+    # Preparar la consulta
+    
+    return render_template('usuarios.html')
+
+
+@app.route('/crudhabitaciones',methods=["GET","POST"])
 def crudhabitaciones():
-    print("crud habitaciones")
-    return render_template('CrudHab.html')
+
+    frm = CrudHabitaciones()
+    if request.method == 'GET':
+        return render_template('CrudHab.html', prueba=frm, titulo='CRUD HAB')
+    else:
+        # Recuperar los datos del formulario
+        # Esta forma permite validar las entradas
+        hab =  escape(request.form['hab'])
+        disp = escape(request.form['disp'])
+        # Validar los datos
+        swerror = False
+        if hab==None or len(hab)==0 or not habitacion_valido(hab):
+            flash('ERROR: Debe suministrar una habitacion')
+            swerror = True
+        if disp==None or len(disp)==0 or disp!='Reservada' or disp!='Disponible':
+            flash('ERROR: Debe suministrar la disponibilidad ')
+            swerror = True
+        if not swerror:
+            # Preparar el query -- Paramétrico
+            sql = "INSERT INTO habitaciones(habitacion, disponibilidad) VALUES(?, ?)"
+            # Ejecutar la consulta
+            res = accion(sql, (hab, disp))
+            # Proceso los resultados
+            if res==0:
+                flash('ERROR: No se pudieron almacenar los datos, reintente')
+            else:
+                flash('INFO: Los datos fueron almacenados satisfactoriamente')
+        return render_template('CrudHab.html', prueba=frm, titulo='CRUD HAB')
 
 @app.route('/ubicacion',methods=["GET"])
 def ubicacion():
     return render_template('ubicacion.html')
 
-@app.route('/habitaciones/',methods=["GET"])
+@app.route('/habitaciones/',methods=["GET","POST"])
 def habitaciones():
-    return render_template('habitaciones.html')
+    frm=Login()
+    # Preparar la consulta
+    sql = f'SELECT habitacion, disponibilidad FROM habitaciones'
+    # Ejecutar la consulta
+    res = seleccion(sql)
+    print(res)
+
+    # Proceso los resultados
+    if len(res)==0:
+        flash("No se encontraron usuarios")
+
+    return render_template('habitaciones.html',messages=res,prueba=frm)
 
 @app.route('/comentarios',methods=["GET","POST"])
 def comentarios():

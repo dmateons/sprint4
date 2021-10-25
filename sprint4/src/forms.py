@@ -1,5 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import TextField, SubmitField, PasswordField, TextAreaField
+from wtforms import validators
 from wtforms.fields.html5 import EmailField
 from wtforms.validators import EqualTo, InputRequired
 
@@ -16,3 +17,10 @@ class Registro(FlaskForm):
     cla = PasswordField('Clave *', validators = [InputRequired(message='Indique la clave')])
     ver = PasswordField('Verificación *', validators = [InputRequired(message='Indique la verificación'), EqualTo(cla,message='Clave y la verificación no coinciden')])
     btn = SubmitField('Registrar')
+
+class CrudHabitaciones(FlaskForm):
+    hab = TextField('Numero de la habitaciones', validators = [InputRequired(message="Indique la habitacion")])
+    disp = TextField('Disponibilidad', validators = [InputRequired(message="Indique la disponibilidad")])
+    btn = SubmitField('Terminar')
+    
+    

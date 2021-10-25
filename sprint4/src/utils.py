@@ -10,3 +10,6 @@ def login_valido(login):
 
 def pass_valido(clave):
     return re.search('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[^\W]{5,40}',clave)
+
+def habitacion_valido(hab):
+    return re.search('(?=.*[0-9])[^\W]{2,3}',hab)

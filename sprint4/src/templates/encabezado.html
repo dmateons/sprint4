@@ -33,7 +33,7 @@
                   <ul class="navbar-nav mr-auto">
                     {% if 'usr' in session %}
                     <li class="nav-item">
-                      <a class="nav-link" href="/logout/">Salir</a>
+                      <a class="nav-link" href="/logout/">Cerrar Sesion</a>
                     </li>
                     {% else %}
                     <li class="nav-item">
@@ -50,9 +50,11 @@
                     <li class="nav-item">
                       <a class="nav-link" href="/ofertas">Ofertas</a>
                     </li>
+                    {% if session['rol']=='admin' %}
                     <li class="nav-item">
                       <a class="nav-link" href="/dashboard">Dashboard</a>
                     </li>
+                    {% endif %}
                   </ul>
                   <form class="form-inline">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
